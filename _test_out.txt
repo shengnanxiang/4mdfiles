@@ -1,0 +1,6 @@
+{"jsonrpc":"2.0","error":{"code":-32000,"message":"Invalid request body for initialize request"},"id":null}
+HTTP_CODE:400
+HTTP_CODE:000
+HTTP_CODE:000
+HTTP_CODE:000
+HTTP_CODE:000

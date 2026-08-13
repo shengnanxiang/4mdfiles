@@ -1,0 +1,3 @@
+event: message
+data: {"result":{"content":[{"type":"text","text":"The MCP server is only available if your active tab is a design or FigJam file."}],"isError":true},"jsonrpc":"2.0","id":33}
+
