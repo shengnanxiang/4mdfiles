@@ -1,1 +1,0 @@
-{"jsonrpc": "2.0", "method": "tools/call", "params": {"name": "get_design_context", "arguments": {"nodeId": "1:2066", "clientLanguages": "html,css,typescript", "clientFrameworks": "react", "disableCodeConnect": true}}, "id": 2}
