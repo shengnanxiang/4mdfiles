@@ -171,7 +171,8 @@ NAS (TS-216, SMB)
 | 真力 8030C | 最终选 HEDD Type 05（试听后更满意，已购） |
 | JBL 305P / Focal Alpha 80 / Barefoot FP03 | 尺寸过大或偏亮，不适合近场桌面 |
 | Neumann KH120 II | 太深、需额外解码，性价比不如 8030C |
-| ZMF Atrium Closed | 卖家反悔；且实测男声偏清淡，非其强项 |
+| ZMF Atrium Closed | 卖家反悔未成；初听第一印象男声不够暖，但连续听几天后不再有此评价 |
+| Meze Empyrean | 试听结束已归还；初戴舒适，但躺躺椅上太松，反而不如 ZMF Atrium 戴着舒服 |
 | KEF Coda W / LSX II / LS50 Wireless II | 后导向孔，离墙 5-10cm 会低频发糊 |
 | Duelund 油浸棉蜡线 | 低阻平板电阻/电容风险，溢价大于实际提升 |
 
