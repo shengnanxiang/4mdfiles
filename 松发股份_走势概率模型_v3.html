@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>松发股份(603268) 走势概率分布模型 v3</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1a2233; --sub:#5b6472;
+    --line:#e6e9ef; --red:#d64541; --green:#1e9e6a; --blue:#2f6fed;
+    --amber:#d98b1f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 20px 64px;}
+  header{margin-bottom:28px;}
+  .tag{display:inline-block;font-size:12px;color:var(--blue);background:#eaf1ff;border-radius:20px;padding:3px 12px;margin-bottom:10px;font-weight:600;}
+  h1{font-size:26px;font-weight:700;letter-spacing:.5px;}
+  .meta{color:var(--sub);font-size:13px;margin-top:6px;}
+  .meta b{color:var(--ink);}
+
+  .hero{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+  .hero .card{text-align:center;padding:22px 12px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .hero .num{font-size:30px;font-weight:800;line-height:1.2;}
+  .hero .lbl{font-size:13px;color:var(--sub);margin-top:4px;}
+  .hero .note{font-size:12px;color:var(--sub);margin-top:6px;}
+  .up{color:var(--green);} .down{color:var(--red);}
+
+  h2{font-size:17px;font-weight:700;margin:32px 0 12px;display:flex;align-items:center;gap:8px;}
+  h2::before{content:"";width:4px;height:16px;background:var(--blue);border-radius:2px;display:inline-block;}
+  .card table,table.tbl{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:#f2f5fa;font-weight:600;color:var(--sub);padding:9px 10px;text-align:center;font-size:13px;white-space:nowrap;}
+  td{padding:9px 10px;text-align:center;border-top:1px solid var(--line);}
+  td.l,th.l{text-align:left;}
+  .hl{background:#fff8e8;font-weight:700;}
+
+  .bars{margin-top:4px;}
+  .bar-row{display:grid;grid-template-columns:110px 1fr 64px;align-items:center;gap:12px;padding:7px 0;border-top:1px dashed var(--line);font-size:13.5px;}
+  .bar-row:first-child{border-top:none;}
+  .track{background:#eef1f6;border-radius:6px;height:18px;overflow:hidden;}
+  .fill{height:100%;border-radius:6px;}
+  .pct{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;}
+
+  .signals{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .sig{border-radius:14px;padding:18px 20px;border:1px solid var(--line);background:var(--card);}
+  .sig h3{font-size:15px;margin-bottom:8px;}
+  .sig ul{margin:8px 0 0 18px;font-size:13.5px;color:#333c4d;}
+  .sig li{margin:5px 0;}
+  .sig .badge{display:inline-block;font-size:12px;font-weight:700;color:#fff;border-radius:6px;padding:2px 10px;margin-bottom:8px;}
+  .sig.red{border-top:3px solid var(--red);} .sig.red .badge{background:var(--red);}
+  .sig.green{border-top:3px solid var(--green);} .sig.green .badge{background:var(--green);}
+
+  .path{background:linear-gradient(180deg,#f0f5ff,#fbfcff);border:1px solid #dbe6ff;border-radius:14px;padding:20px 24px;}
+  .path p{font-size:14px;margin:6px 0;}
+  .path .step{display:flex;gap:10px;align-items:flex-start;margin:10px 0;}
+  .path .dot{flex:none;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .fine{font-size:12.5px;color:var(--sub);}
+  .disclaimer{margin-top:36px;padding:16px 20px;background:#fff6f0;border:1px solid #f5dcc8;border-radius:12px;font-size:12.5px;color:#8a5a2b;}
+  @media (max-width:680px){ .hero,.signals,.grid2{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="tag">量化模型 · v3（真实日线双源验证）</span>
+  <h1>松发股份（603268）未来三个月走势概率分布</h1>
+  <div class="meta">基准日：2026-11-05 收盘 <b>154.53 元</b>（−7.84%）｜ 数据：2026-09-01 至 11-05 共 42 个真实交易日（腾讯/搜狐双源交叉验证）｜ 方法：经验自举蒙特卡洛 × 6 万路径，三情景加权</div>
+</header>
+
+<div class="hero">
+  <div class="card">
+    <div class="num">162 元</div>
+    <div class="lbl">3 个月中位数（P50）</div>
+    <div class="note">较现价 <b class="up">+5%</b>，中性预期温和修复</div>
+  </div>
+  <div class="card">
+    <div class="num">144 – 183</div>
+    <div class="lbl">3 个月主区间（P25–P75）</div>
+    <div class="note">有 50% 概率落在此区间</div>
+  </div>
+  <div class="card">
+    <div class="num">148 – 150</div>
+    <div class="lbl">基准路径必经之地</div>
+    <div class="note"><b>79%</b> 概率再次回踩，先探底后修复</div>
+  </div>
+</div>
+
+<h2>一、价格分位数（元）</h2>
+<div class="card">
+  <table class="tbl">
+    <tr><th class="l">期限</th><th>P5 悲观</th><th>P25</th><th>P50 中位</th><th>P75</th><th>P95 乐观</th></tr>
+    <tr><td class="l">1 周</td><td>137</td><td>147</td><td class="hl">155</td><td>163</td><td>176</td></tr>
+    <tr><td class="l">1 个月</td><td>126</td><td>145</td><td class="hl">157</td><td>171</td><td>194</td></tr>
+    <tr><td class="l">3 个月</td><td>117</td><td>144</td><td class="hl">162</td><td>183</td><td>217</td></tr>
+  </table>
+  <p class="fine" style="margin-top:10px">解读：短期（1 周）中枢与现价持平，说明模型认为杀跌动能接近释放但尚未反转；越往后中位数越上移，但分布也越宽——远期不确定性天然更大。</p>
+</div>
+
+<h2>二、3 个月末价格区间分布</h2>
+<div class="card bars">
+  <div class="bar-row"><span>&lt; 130</span><div class="track"><div class="fill" style="width:11%;background:#c0392b"></div></div><span class="pct">11%</span></div>
+  <div class="bar-row"><span>130 – 150</span><div class="track"><div class="fill" style="width:22%;background:#e67e22"></div></div><span class="pct">22%</span></div>
+  <div class="bar-row"><span>150 – 170</span><div class="track"><div class="fill" style="width:28%;background:#f1c40f"></div></div><span class="pct">28%</span></div>
+  <div class="bar-row"><span>170 – 200</span><div class="track"><div class="fill" style="width:27%;background:#8bc34a"></div></div><span class="pct">27%</span></div>
+  <div class="bar-row"><span>&gt; 200</span><div class="track"><div class="fill" style="width:12%;background:#1e9e6a"></div></div><span class="pct">12%</span></div>
+  <p class="fine" style="margin-top:10px">左侧（&lt;150）合计 33%，右侧（&gt;170）合计 39%，中部（150–170）28% —— 分布基本对称、略偏右，不是单边市。</p>
+</div>
+
+<h2>三、关键事件概率</h2>
+<div class="grid2">
+  <div class="card">
+    <table class="tbl">
+      <tr><th class="l">下行事件</th><th>1 个月</th><th>3 个月</th></tr>
+      <tr><td class="l">跌破 140</td><td>18%</td><td>20%</td></tr>
+      <tr><td class="l">跌破 130</td><td>7%</td><td class="hl">11%</td></tr>
+      <tr><td class="l">跌破 120</td><td>2%</td><td>6%</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <table class="tbl">
+      <tr><th class="l">上行事件</th><th>1 个月</th><th>3 个月</th></tr>
+      <tr><td class="l">重上 180</td><td>15%</td><td class="hl">28%</td></tr>
+      <tr><td class="l">重上 200</td><td>3%</td><td>12%</td></tr>
+      <tr><td class="l">重上 220</td><td>&lt;1%</td><td>4%</td></tr>
+    </table>
+  </div>
+</div>
+<div class="card" style="margin-top:14px">
+  <table class="tbl">
+    <tr><th class="l">3 个月内最低价触及（回踩概率）</th><th>≤150</th><th>≤140</th><th>≤130</th><th>≤120</th></tr>
+    <tr><td class="l">概率</td><td class="hl">79%</td><td>49%</td><td>25%</td><td>12%</td></tr>
+  </table>
+  <p class="fine" style="margin-top:10px">注意区分"碰到"与"停在那里"：79% 概率会再碰一次 150 以下，但 3 个月末仍停在 150 以下的概率只有 33%（22%+11%）——触碰 ≠ 破位。</p>
+</div>
+
+<h2>四、基准路径（最可能的剧本）</h2>
+<div class="path">
+  <div class="step"><div class="dot">1</div><p><b>惯性探底（1–2 周）</b>：恐慌情绪延续，测试 <b>148–150 支撑带</b>（11/3 前低 148.10 + 定增价 ≈150）。此阶段宽幅震荡，单日 ±5% 属常态。</p></div>
+  <div class="step"><div class="dot">2</div><p><b>缩量筑底（2–6 周）</b>：成交回落至日均 7.7 万手以下，波动率从暴跌期的 4.4%/日向平稳期的 2.9%/日回归。谁都无法创新低，但也涨不动。</p></div>
+  <div class="step"><div class="dot">3</div><p><b>方向选择（6 周后）</b>：由两个量价信号裁决（见下）。修复分支 → 挑战 180–200；破位分支 → 下探 130–120。基准判断中位数落在 <b>162</b>。</p></div>
+</div>
+
+<h2>五、两个真实验证信号（量化阈值）</h2>
+<div class="signals">
+  <div class="sig red">
+    <span class="badge">熊市分支</span>
+    <h3>148 放量失守 → 看 130–120</h3>
+    <ul>
+      <li>单日收盘 &lt;148，且成交量 <b>≥10 万手</b>（换手 ≥4.3%，成交额 ≥16 亿）</li>
+      <li>或时间确认：<b>连续 3 日收盘 &lt;148</b>（缩量阴跌同样有效）</li>
+      <li>背景：机构目标价失守 + 板块逻辑恶化，概率约 11%（终值 &lt;130）</li>
+    </ul>
+  </div>
+  <div class="sig green">
+    <span class="badge">修复分支</span>
+    <h3>放量站稳 168 → 看 180–200</h3>
+    <ul>
+      <li>成交量 <b>≥12 万手</b>（换手 ≥5%）——必须是 9/18 级别的量，不是 11/4 那种 1.1 倍量的假阳线</li>
+      <li>收盘 ≥168，且收在当日振幅<b>上 1/3</b>（不收长上影）</li>
+      <li>次日不回补（低点不破 165）——量的延续比单日脉冲更重要</li>
+    </ul>
+  </div>
+</div>
+
+<h2>六、模型方法与数据</h2>
+<div class="card">
+  <table class="tbl">
+    <tr><th class="l" style="width:110px">项目</th><th class="l">内容</th></tr>
+    <tr><td class="l">收益池</td><td class="l">2026-09-01 ~ 11-05 共 <b>41 个真实日收益率</b>（含 +7.49%、−7.84% 等极端样本；10/19=+3.58%、10/27=−1.69% 已用接口实测值替换估算）</td></tr>
+    <tr><td class="l">模拟方法</td><td class="l">去趋势经验自举蒙特卡洛，6 万路径 × 63 交易日，叠加 ±10% 涨跌停约束</td></tr>
+    <tr><td class="l">波动率</td><td class="l">随时间衰减：4.4%/日（暴跌期实测）→ 2.9%/日（平稳期实测），衰减下限 62%</td></tr>
+    <tr><td class="l">三情景</td><td class="l">熊市 20%（漂移 −0.5%/日衰减）｜震荡 45%（零漂移）｜修复 35%（+0.32%/日衰减）；支撑 150 下方加回复力、压力 190 上方减压</td></tr>
+    <tr><td class="l">数据源</td><td class="l">腾讯行情接口（前复权）+ 搜狐历史行情，双源全部一致</td></tr>
+  </table>
+</div>
+
+<h2>七、模型局限（必读）</h2>
+<div class="card">
+  <ul style="margin-left:18px;font-size:13.5px;color:#3a4356">
+    <li style="margin:6px 0"><b>中位数位置由假设决定，不是数据决定</b>——三情景的权重与漂移是主观设定，模型回答的是"区间的宽度"，不是"方向的确信"。</li>
+    <li style="margin:6px 0"><b>看不到基本面</b>：Q3 净利 30.64 亿（+391%）、2027E 约 9 倍 PE、机构目标均价 205——这些正向锚不在模型视野内；同样，地缘/订单恶化也不在。</li>
+    <li style="margin:6px 0"><b>看不到跳空与连续涨跌停</b>：真实左尾永远比模型更肥。</li>
+    <li style="margin:6px 0"><b>有效用法</b>：把它当"风险地图"——用它度量各价位区间的可能性、设置预案与止损位；不要当"预测"用。</li>
+  </ul>
+</div>
+
+<div class="disclaimer">
+  <b>免责声明</b>：本页面为个人研究性质的量化测算，基于公开网络数据的整理与模拟，可能存在数据口径差异或延迟。所有概率均为模型估算值，不构成任何投资建议。股价有风险，决策需独立判断，并以交易所公告与行情软件实时数据为准。
+</div>
+
+</div>
+</body>
+</html>
